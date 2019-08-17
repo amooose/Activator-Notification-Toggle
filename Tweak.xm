@@ -3,6 +3,19 @@
 #import <notif.h>
 #import <libactivator/libactivator.h>
 
+static BOOL isLocked() {
+
+    long state = [[%c(SBLockStateAggregator) sharedInstance] lockState];
+
+    if(state == 3){
+        return YES;
+    } else {
+        return NO;
+    }
+
+}
+
+
 @interface NotifListener : NSObject <LAListener>
 @end
 
@@ -10,10 +23,10 @@
 
 - (void)activator:(LAActivator *)activator receiveEvent:(LAEvent *)event
 {
-    // Coversheet toggle from https://www.reddit.com/r/jailbreakdevelopers/comments/82hrqg/best_way_to_present_coversheet_notification/dvavuab?utm_source=share&utm_medium=web2x
+
     SBCoverSheetPresentationManager *_csController = [%c(SBCoverSheetPresentationManager) sharedInstance];
 
-    if (_csController != nil) {
+    if (_csController != nil && !isLocked()) {
 
         SBCoverSheetSlidingViewController *currentSlidingViewController = nil;
 

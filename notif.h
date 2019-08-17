@@ -16,3 +16,7 @@
 - (void)handleButtonUpEventFromSource:(int)source;
 @end
 
+@interface SBLockStateAggregator
++ (id)sharedInstance;
+- (unsigned long long)lockState;
+@end
