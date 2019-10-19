@@ -1,2 +1,2 @@
 # Activator-Notification-Toggle
-An Activator plugin to toggle the Notification Center (aka Cover Sheet)
+An Activator (iOS Jailbreak app) plugin to toggle the Notification Center (aka Cover Sheet)
